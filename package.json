@@ -1,0 +1,11 @@
+{
+  "name": "steganographix-wails3",
+  "version": "0.0.1",
+  "description": "Congratulations on generating your Wails3 application! This README will guide you through the next steps to get your project up and running.",
+  "license": "ISC",
+  "author": "Péter Komlósi",
+  "scripts": {
+    "dev": "wails3 dev",
+    "build": "wails3 build"
+  }
+}
