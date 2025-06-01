@@ -5,12 +5,12 @@ version: '3'
 
 # This information is used to generate the build assets.
 info:
-  companyName: "My Company" # The name of the company
-  productName: "My Product" # The name of the application
-  productIdentifier: "com.mycompany.myproduct" # The unique product identifier
-  description: "A program that does X" # The application description
-  copyright: "(c) 2024, My Company" # Copyright text
-  comments: "Some Product Comments" # Comments
+  companyName: "Péter Komlósi" # The name of the company
+  productName: "Steganographix" # The name of the application
+  productIdentifier: "com.komlosidev.steganographix" # The unique product identifier
+  description: "Extract from and embed hidden data from media files" # The application description
+  copyright: "(c) 2025, Péter Komlósi" # Copyright text
+  comments: "Preview version" # Comments
   version: "v0.0.1" # The application version
 
 # Dev mode configuration

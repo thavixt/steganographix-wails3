@@ -1,59 +1,56 @@
-# Welcome to Your New Wails3 Project!
+# Steganographix
 
-Congratulations on generating your Wails3 application! This README will guide you through the next steps to get your project up and running.
+Steganographix is an application for performing [steganography](https://en.wikipedia.org/wiki/Steganography) on images, text and audio files.
 
-## Getting Started
+## Notes about developing with Wails
 
-1. Navigate to your project directory in the terminal.
+- [Getting started with Wails3](https://v3alpha.wails.io/getting-started/installation/)
 
-2. To run your application in development mode, use the following command:
 
-   ```
-   wails3 dev
-   ```
+### About
 
-   This will start your application and enable hot-reloading for both frontend and backend changes.
+This was made with the official Wails React-TS template. More information about the project settings can be found
+here: https://wails.io/docs/reference/project-config
 
-3. To build your application for production, use:
+### Live Development
 
-   ```
-   wails3 build
-   ```
+To run in live development mode, run:
 
-   This will create a production-ready executable in the `build` directory.
+```bash
+npm run dev
+```
 
-## Exploring Wails3 Features
+This will run a Vite development
+server that will provide very fast hot reload of your frontend changes, *but you cannot call your Go code from the environment - to do that, resort to the desktop build.*
 
-Now that you have your project set up, it's time to explore the features that Wails3 offers:
+### Building
 
-1. **Check out the examples**: The best way to learn is by example. Visit the `examples` directory in the `v3/examples` directory to see various sample applications.
+[wails build - Documentation](https://v3alpha.wails.io/getting-started/your-first-app/#building-your-application)
 
-2. **Run an example**: To run any of the examples, navigate to the example's directory and use:
 
-   ```
-   go run .
-   ```
+To build a the application in production mode:
+```bash
+npm run build
+```
 
-   Note: Some examples may be under development during the alpha phase.
+### Packaging
 
-3. **Explore the documentation**: Visit the [Wails3 documentation](https://v3alpha.wails.io/) for in-depth guides and API references.
+[wails package - Documentation](https://v3alpha.wails.io/getting-started/your-first-app/#packaging-your-application)
 
-4. **Join the community**: Have questions or want to share your progress? Join the [Wails Discord](https://discord.gg/JDdSxwjhGf) or visit the [Wails discussions on GitHub](https://github.com/wailsapp/wails/discussions).
 
-## Project Structure
+To build a redistributable:
+```bash
+npm run package
+```
 
-Take a moment to familiarize yourself with your project structure:
+> To package for Windows, first download the Microsoft Edge WebView2 Bootstrapper:
+```bash
+wget -O build/windows/nsis/MicrosoftEdgeWebview2Setup.exe https://go.microsoft.com/fwlink/p/?LinkId=2124703
+```
 
-- `frontend/`: Contains your frontend code (HTML, CSS, JavaScript/TypeScript)
-- `main.go`: The entry point of your Go backend
-- `app.go`: Define your application structure and methods here
-- `wails.json`: Configuration file for your Wails project
+## TODO
 
-## Next Steps
-
-1. Modify the frontend in the `frontend/` directory to create your desired UI.
-2. Add backend functionality in `main.go`.
-3. Use `wails3 dev` to see your changes in real-time.
-4. When ready, build your application with `wails3 build`.
-
-Happy coding with Wails3! If you encounter any issues or have questions, don't hesitate to consult the documentation or reach out to the Wails community.
+- use npm workspace for frontend directory?
+- GitHub Action / CI for testing and packaging
+- testing (vitest / go test)
+- better styling

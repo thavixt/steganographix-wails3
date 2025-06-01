@@ -28,10 +28,10 @@ func main() {
 	// 'Bind' is a list of Go struct instances. The frontend has access to the methods of these instances.
 	// 'Mac' options tailor the application when running an macOS.
 	app := application.New(application.Options{
-		Name:        "steganographix-wails3",
-		Description: "A demo of using raw HTML & CSS",
+		Name:        "com.thavixt.steganographix",
+		Description: "A small application for extracting steganographic data from media files",
 		Services: []application.Service{
-			application.NewService(&GreetService{}),
+			application.NewService(&SteganographyService{}),
 		},
 		Assets: application.AssetOptions{
 			Handler: application.AssetFileServerFS(assets),
@@ -53,8 +53,14 @@ func main() {
 			Backdrop:                application.MacBackdropTranslucent,
 			TitleBar:                application.MacTitleBarHiddenInset,
 		},
-		BackgroundColour: application.NewRGB(27, 38, 54),
-		URL:              "/",
+		BackgroundColour:        application.NewRGB(0, 0, 0),
+		URL:                     "/",
+		MinWidth:                700,
+		MinHeight:               500,
+		InitialPosition:         application.WindowCentered,
+		StartState:              application.WindowStateMaximised,
+		FullscreenButtonEnabled: false,
+		ZoomControlEnabled:      false,
 	})
 
 	// Create a goroutine that emits an event containing the current time every second.

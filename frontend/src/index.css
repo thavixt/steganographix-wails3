@@ -118,3 +118,9 @@
     @apply bg-background text-foreground;
   }
 }
+
+.canvas-zoom {
+  width: 300px;   /* or any desired display size */
+  height: auto;
+  image-rendering: pixelated; /* for crisp upscaling */
+}
