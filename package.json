@@ -5,16 +5,11 @@
   "license": "ISC",
   "author": "Péter Komlósi",
   "scripts": {
-    "build:all": "npm run build && npm run build:windows",
-    "build:windows": "GOOS=windows GOARCH=amd64 wails3 build",
-    "build": "wails3 build",
+    "build:windows": "GOOS=windows GOARCH=amd64 wails3 task windows:build -- PRODUCTION=true",
     "check": "( cd frontend; npm run lint && npm run test )",
     "clear": "rm bin/*",
     "dev": "wails3 dev",
-    "generate-ts-bindings": "wails3 generate bindings -ts",
-    "package:all": "npm run package && npm run package:windows",
-    "package:windows": "wails3 task windows:create:nsis:installer",
-    "package": "wails3 package"
+    "generate-ts-bindings": "wails3 generate bindings -ts"
   },
   "dependencies": {
     "@wailsio/runtime": "^3.0.0-alpha.66"

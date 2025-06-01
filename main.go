@@ -55,7 +55,7 @@ func main() {
 		},
 		BackgroundColour:        application.NewRGB(0, 0, 0),
 		URL:                     "/",
-		MinWidth:                700,
+		MinWidth:                850,
 		MinHeight:               500,
 		InitialPosition:         application.WindowCentered,
 		StartState:              application.WindowStateMaximised,

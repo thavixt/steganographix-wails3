@@ -33,6 +33,8 @@ To build a the application in production mode:
 npm run build
 ```
 
+> TODO: build for production
+
 ### Packaging
 
 [wails package - Documentation](https://v3alpha.wails.io/getting-started/your-first-app/#packaging-your-application)
