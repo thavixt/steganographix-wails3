@@ -120,7 +120,8 @@
 }
 
 .canvas-zoom {
-  width: 300px;   /* or any desired display size */
+  width: 100%;
+  max-width: 300px;
   height: auto;
-  image-rendering: pixelated; /* for crisp upscaling */
+  image-rendering: pixelated;
 }

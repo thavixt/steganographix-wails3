@@ -13,12 +13,13 @@ function App() {
   return (
     <main className='m-auto w-full max-w-[1000px] flex flex-col gap-8 items-center justify-center'>
       <Tabs defaultValue="home" className="w-full">
-        <TabsList className="grid w-full grid-cols-5">
+        <TabsList className="w-full">
           <TabsTrigger value="home">Home</TabsTrigger>
           <TabsTrigger value="stego-image">Extract and embed image</TabsTrigger>
           <TabsTrigger value="stego-text">Extract and embed text</TabsTrigger>
           <TabsTrigger value="compare">Compare images</TabsTrigger>
           <TabsTrigger value="about">About</TabsTrigger>
+          <TabsTrigger value="notes">Notes</TabsTrigger>
         </TabsList>
         <TabsContent value="home"><Home /></TabsContent>
         <TabsContent value="stego-image"><StegoImage /></TabsContent>

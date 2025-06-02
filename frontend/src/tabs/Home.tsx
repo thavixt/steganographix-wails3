@@ -1,9 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 
-import { SteganographyService } from '../../bindings/github.com/thavixt/steganographix-wails3'
+import { LogService } from '../../bindings/github.com/thavixt/steganographix-wails3'
 import { toast } from "sonner";
 
 export default function Home() {
@@ -31,7 +29,7 @@ export default function Home() {
         <Button
           variant="outline"
           onClick={async () => {
-            const greetings = await SteganographyService.Greet("visitor");
+            const greetings = await LogService.Greet("visitor");
             toast(greetings)
           }}
         >

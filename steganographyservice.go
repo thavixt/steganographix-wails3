@@ -1,16 +1,6 @@
 package main
 
-import (
-	"math/rand"
-)
-
 type SteganographyService struct{}
-
-func (s *SteganographyService) Greet(name string) string {
-	greetings := []string{"Hello", "Hi", "Hey", "Greetings", "Salutations", "Welcome", "Welcome to Steganographix"}
-	greeting := greetings[rand.Intn(len(greetings))]
-	return greeting + " " + name + "!"
-}
 
 func (s *SteganographyService) ExtractLSB(imageData []byte, width int, height int) []byte {
 	var extractedBytes []byte

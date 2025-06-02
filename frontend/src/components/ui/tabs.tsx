@@ -20,6 +20,22 @@ function TabsList({
   className,
   ...props
 }: React.ComponentProps<typeof TabsPrimitive.List>) {
+  if (true) {
+    return (
+      <TabsPrimitive.List
+        data-slot="tabs-list"
+        className={cn(
+          "inline-flex flex-wrap h-fit w-fit p-1 items-center justify-center",
+          "rounded-lg z-100 sticky top-4",
+          "bg-muted text-muted-foreground",
+          "drop-shadow-xl border border-primary",
+          className
+        )}
+        {...props}
+      />
+    )
+  }
+
   return (
     <TabsPrimitive.List
       data-slot="tabs-list"

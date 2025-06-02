@@ -2,7 +2,6 @@ import { base64ToBytes, scrollToElement } from '@/lib/utils';
 import { SteganographyService } from '../../bindings/github.com/thavixt/steganographix-wails3';
 
 export async function imageFromImage(
-  name: string,
   sourceCanvas: HTMLCanvasElement | null,
   targetCanvas: HTMLCanvasElement | null,
 ): Promise<ImageData | string | undefined> {
@@ -45,10 +44,7 @@ export async function imageFromImage(
       targetCanvas.width = width;
       targetCanvas.height = height;
       targetCanvasCtx.putImageData(newImageData, 0, 0);
-
       scrollToElement(sourceCanvas);
-
-      console.log(`[imageFromImage] data extracted from file: ${name}`)
       resolve(newImageData);
     } catch (ex) {
       console.error(ex);

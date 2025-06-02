@@ -5,3 +5,4 @@ build/windows/nsis/MicrosoftEdgeWebview2Setup.exe
 frontend/dist
 frontend/node_modules
 node_modules
+test_images

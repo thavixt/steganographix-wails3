@@ -1,18 +1,27 @@
 # Steganographix
 
-Steganographix is an application for performing [steganography](https://en.wikipedia.org/wiki/Steganography) on images, text and audio files.
+Steganographix is an application for performing [steganography](https://en.wikipedia.org/wiki/Steganography) on images and audio files.
 
 ## Notes about developing with Wails
 
-- [Getting started with Wails3](https://v3alpha.wails.io/getting-started/installation/)
+This repo was set up with the [official Wails (v3) React-Typescript template](https://v3alpha.wails.io/getting-started/your-first-app/#creating-a-new-project).
 
+The frontend of the app is currently set up with [Vite](https://vite.dev/guide/) and [React](https://react.dev/) with [Typescript](https://www.typescriptlang.org/), and [Tailwind](https://tailwindcss.com/) for styling.
 
-### About
+## Requirements:
 
-This was made with the official Wails React-TS template. More information about the project settings can be found
-here: https://wails.io/docs/reference/project-config
+- node v24
+- npm v11
+- go v1.24
 
-### Live Development
+> For additional dependencies required per platform, read more [here](https://v3alpha.wails.io/getting-started/installation/#dependencies).
+
+## Development
+
+First, install dependencies:
+```bash
+npm install
+```
 
 To run in live development mode, run:
 
@@ -20,39 +29,27 @@ To run in live development mode, run:
 npm run dev
 ```
 
-This will run a Vite development
+The `npm run dev` will run a Vite development
 server that will provide very fast hot reload of your frontend changes, *but you cannot call your Go code from the environment - to do that, resort to the desktop build.*
 
-### Building
+## Taskfiles
+
+The [Taskfiles](https://taskfile.dev/) required for Wails development also make sure the dependencies required for the frontend application in the `frontend` directory are installed before building. There's a main Taskfile at the root of the project, on at `build/Taksfile.yml` and one per platform in the `build/<platform>` directories.
+
+These Taskfiles describe all the scripts required for compiling, building, packaging, installing, etc.
+
+## Building a `.exe` for Windows
 
 [wails build - Documentation](https://v3alpha.wails.io/getting-started/your-first-app/#building-your-application)
 
-
 To build a the application in production mode:
 ```bash
-npm run build
+npm run build:windows
 ```
 
-> TODO: build for production
-
-### Packaging
-
-[wails package - Documentation](https://v3alpha.wails.io/getting-started/your-first-app/#packaging-your-application)
-
-
-To build a redistributable:
-```bash
-npm run package
-```
-
-> To package for Windows, first download the Microsoft Edge WebView2 Bootstrapper:
-```bash
-wget -O build/windows/nsis/MicrosoftEdgeWebview2Setup.exe https://go.microsoft.com/fwlink/p/?LinkId=2124703
-```
-
-## TODO
+## Todo
 
 - use npm workspace for frontend directory?
-- GitHub Action / CI for testing and packaging
 - testing (vitest / go test)
+- GitHub Action / CI for test/build/packaging
 - better styling

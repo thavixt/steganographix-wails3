@@ -31,6 +31,7 @@ func main() {
 		Name:        "com.thavixt.steganographix",
 		Description: "A small application for extracting steganographic data from media files",
 		Services: []application.Service{
+			application.NewService(&LogService{}),
 			application.NewService(&SteganographyService{}),
 		},
 		Assets: application.AssetOptions{
@@ -48,10 +49,18 @@ func main() {
 	// 'URL' is the URL that will be loaded into the webview.
 	app.NewWebviewWindowWithOptions(application.WebviewWindowOptions{
 		Title: "Steganographix by @thavixt",
+		Windows: application.WindowsWindow{
+			Theme:                   application.Dark,
+			GeneralAutofillEnabled:  false,
+			PasswordAutosaveEnabled: false,
+		},
 		Mac: application.MacWindow{
 			InvisibleTitleBarHeight: 50,
 			Backdrop:                application.MacBackdropTranslucent,
 			TitleBar:                application.MacTitleBarHiddenInset,
+		},
+		Linux: application.LinuxWindow{
+			//
 		},
 		BackgroundColour:        application.NewRGB(0, 0, 0),
 		URL:                     "/",

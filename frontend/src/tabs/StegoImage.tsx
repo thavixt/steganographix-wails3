@@ -5,7 +5,7 @@ import { Section } from '@/components/Section';
 import { Button } from '@/components/ui/button.js';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { imageFromImage } from '@/logic/imageFromImage.js';
-import { clearCanvas, resizeCanvas } from '@/lib/utils.js';
+import { clearCanvas, downloadCanvasToBmp, downloadCanvasToPng, resizeCanvas } from '@/lib/utils.js';
 
 export default function StegoImage() {
   const [inputDisabled, setInputDisabled] = useState(true);
@@ -71,12 +71,16 @@ export default function StegoImage() {
 
   const extractImage = async () => {
     setInputDisabled(true);
-    const result = await imageFromImage(fileName, sourceCanvasRef.current, extractedCanvasRef.current);
+    const result = await imageFromImage(sourceCanvasRef.current, extractedCanvasRef.current);
     if (sourceFileDimensions) {
-      setResultFileDimensions({ x: sourceFileDimensions.x / 2, y: sourceFileDimensions.y / 2 });
+      setResultFileDimensions({ x: Math.floor(sourceFileDimensions.x / 2), y: Math.floor(sourceFileDimensions.y / 2) });
     }
     console.log("imageFromImage result:", sourceFileDimensions, resultFileDimensions, result);
     setInputDisabled(false);
+  }
+
+  const downloadExtractedImage = () => {
+    downloadCanvasToPng(extractedCanvasRef.current);
   }
 
   return (
@@ -85,10 +89,10 @@ export default function StegoImage() {
         <CardTitle>Image from image</CardTitle>
         <CardDescription>Extract a (potentially) hidden image from any photo you have. The extracted image will have quarter the size of the original - half the width and height.</CardDescription>
       </CardHeader>
-      <CardContent className="grid grid-cols-2 gap-24">
+      <CardContent className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <Section title='Source image'>
           <Canvas ref={sourceCanvasRef} />
-          <FileInput ref={sourceInputRef} label='Select an image' name='input' onChange={onInput} />
+          <FileInput ref={sourceInputRef} accept='image/*' name='input' onChange={onInput} />
           <Button disabled={inputDisabled} onClick={extractImage}>Extract steganographic data</Button>
         </Section>
         <Section title='Extracted image'>
@@ -98,7 +102,7 @@ export default function StegoImage() {
               The above image was extracted from a <code>{sourceFileDimensions.x}x{sourceFileDimensions.y}</code> image, resulting in a <code>{resultFileDimensions.x}x{resultFileDimensions.y}</code> image.
             </p>
           ) : null}
-          <Button variant="secondary" disabled={inputDisabled}>Download image</Button>
+          <Button variant="outline" disabled={inputDisabled} onClick={downloadExtractedImage}>Download image</Button>
           <Button variant="destructive" disabled={inputDisabled} onClick={resetStates}>Reset</Button>
         </Section>
         <Section title='Image to embed'>
@@ -108,7 +112,7 @@ export default function StegoImage() {
         </Section>
         <Section title='Result image'>
           <Canvas ref={resultCanvasRef} />
-          <Button variant="secondary" disabled={inputDisabled}>Download image</Button>
+          <Button variant="outline" disabled={inputDisabled}>Download image</Button>
         </Section>
       </CardContent>
     </Card>
